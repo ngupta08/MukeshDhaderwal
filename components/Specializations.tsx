@@ -136,16 +136,82 @@ export default function Specializations() {
           </p>
         </div>
 
-        {/* Specializations Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Specializations Grid - Horizontal scroll on mobile, grid on larger screens */}
+        <div className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 md:gap-8">
+          {/* Mobile: Horizontal scrollable container */}
+          <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
+            {specializations.map((spec, index) => {
+              const Icon = spec.icon
+              return (
+                <div
+                  key={spec.id}
+                  className="group relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out overflow-hidden border-2 border-gray-100 hover:border-opacity-100 min-h-[400px] w-[85vw] flex-shrink-0 snap-center animate-fade-in-up"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                    animationFillMode: 'both'
+                  }}
+                >
+                  {/* Background Image */}
+                  {spec.backgroundImage ? (
+                    <div className="absolute inset-0">
+                      <Image
+                        src={spec.backgroundImage}
+                        alt={spec.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 25vw"
+                      />
+                      {/* Dark overlay for text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70 group-hover:from-black/60 group-hover:via-black/50 group-hover:to-black/60 transition-all duration-300"></div>
+                    </div>
+                  ) : (
+                    <div className="absolute inset-0 bg-slate-800"></div>
+                  )}
+                  
+                  {/* Card Content */}
+                  <div className="relative p-6 md:p-8 h-full flex flex-col z-10">
+                    {/* Icon */}
+                    <div className={`mb-4 w-14 h-14 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300`}>
+                      <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 drop-shadow-lg group-hover:text-teal-200 transition-colors duration-300">
+                      {spec.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-white/90 text-sm md:text-base leading-relaxed flex-grow mb-4 drop-shadow-md">
+                      {spec.description}
+                    </p>
+
+                    {/* Learn More Link */}
+                    <div className="flex items-center text-sm font-semibold text-white group-hover:text-teal-200 transition-colors">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </div>
+
+                    {/* Decorative corner element */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:opacity-20 transition-opacity"></div>
+                  </div>
+
+                  {/* Hover border effect */}
+                  <div className={`absolute inset-0 border-2 border-white/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20`}></div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Desktop: Grid layout */}
           {specializations.map((spec, index) => {
             const Icon = spec.icon
             return (
               <div
                 key={spec.id}
-                className="group relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-gray-100 hover:border-opacity-100 min-h-[400px]"
+                className="hidden sm:block group relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out overflow-hidden border-2 border-gray-100 hover:border-opacity-100 min-h-[400px] animate-fade-in-up"
                 style={{
-                  animationDelay: `${index * 100}ms`
+                  animationDelay: `${index * 100}ms`,
+                  animationFillMode: 'both'
                 }}
               >
                 {/* Background Image */}

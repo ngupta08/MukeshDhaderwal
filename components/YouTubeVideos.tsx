@@ -57,8 +57,89 @@ export default function YouTubeVideos() {
             </p>
           </div>
 
-          {/* Video Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* Video Grid - Horizontal scroll on mobile, grid on larger screens */}
+          <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8">
+            {/* Mobile: Horizontal scrollable container */}
+            <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
+              {youtubeVideos.map((video) => {
+                const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
+                const isHovered = hoveredVideo === video.id
+                
+                return (
+                  <div
+                    key={video.id}
+                    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer w-[85vw] flex-shrink-0 snap-center"
+                    onMouseEnter={() => setHoveredVideo(video.id)}
+                    onMouseLeave={() => setHoveredVideo(null)}
+                    onClick={() => openVideo(video.videoId)}
+                  >
+                    {/* Thumbnail Container */}
+                    <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gray-900">
+                      <Image
+                        src={thumbnailUrl}
+                        alt={video.title}
+                        fill
+                        className={`object-cover transition-transform duration-300 ${
+                          isHovered ? 'scale-110' : 'scale-100'
+                        }`}
+                        sizes="85vw"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      
+                      {/* Play Button */}
+                      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                        isHovered ? 'scale-110 opacity-100' : 'scale-100 opacity-90'
+                      }`}>
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-red-700 transition-colors">
+                          <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="white" />
+                        </div>
+                      </div>
+
+                      {/* Duration Badge */}
+                      {video.duration && (
+                        <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-2 py-1 rounded text-xs font-semibold flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {video.duration}
+                        </div>
+                      )}
+
+                      {/* Category Badge */}
+                      {video.category && (
+                        <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                          {video.category}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Video Info */}
+                    <div className="p-5">
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                        {video.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 text-sm md:text-base mb-4 line-clamp-2">
+                        {video.description}
+                      </p>
+
+                      {/* Meta Information */}
+                      {video.date && (
+                        <div className="flex items-center gap-1 text-xs md:text-sm text-gray-500">
+                          <Calendar className="w-4 h-4" />
+                          <span>{video.date}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Hover Effect Border */}
+                    <div className="absolute inset-0 border-2 border-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Desktop: Grid layout */}
             {youtubeVideos.map((video) => {
               const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
               const isHovered = hoveredVideo === video.id
@@ -66,7 +147,7 @@ export default function YouTubeVideos() {
               return (
                 <div
                   key={video.id}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  className="hidden sm:block group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
                   onMouseEnter={() => setHoveredVideo(video.id)}
                   onMouseLeave={() => setHoveredVideo(null)}
                   onClick={() => openVideo(video.videoId)}

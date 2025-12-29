@@ -19,7 +19,7 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4 text-teal-400">About Us</h3>
             <div className="mb-4">
               <Image
-                src="/logo.jpeg"
+                src="/logo.svg"
                 alt="Mano Unnati Neuropsychiatry and De-addiction Care"
                 width={60}
                 height={60}
@@ -131,7 +131,7 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="leading-relaxed">
-                    G1, 3/264, "Mano Unnati" Neuro-Psychiatric, De-addiction & Counselling Clinic, 
+                    G1, 3/264, &quot;Mano Unnati&quot; Neuro-Psychiatric, De-addiction & Counselling Clinic, 
                     Chitrakoot Sector-3, Near Chitrakoot Stadium, Jaipur - 302021
                   </p>
                 </div>
@@ -149,25 +149,14 @@ export default function Footer() {
               </div>
 
               {/* Phone */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                  <a 
-                    href="tel:+919413405487" 
-                    className="hover:text-teal-400 transition-colors"
-                  >
-                    +91-9413405487
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                  <a 
-                    href="tel:+919509046236" 
-                    className="hover:text-teal-400 transition-colors"
-                  >
-                    +91-9509046236
-                  </a>
-                </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
+                <a 
+                  href="tel:+919509046236" 
+                  className="hover:text-teal-400 transition-colors"
+                >
+                  095090 46236
+                </a>
               </div>
 
               {/* Social Media */}

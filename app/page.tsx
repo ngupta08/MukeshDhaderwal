@@ -5,6 +5,7 @@ import ClinicPhotos from '@/components/ClinicPhotos'
 import Gallery from '@/components/Gallery'
 import YouTubeVideos from '@/components/YouTubeVideos'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <YouTubeVideos />
       <Footer />
+      <WhatsAppButton />
     </main>
   )
 }

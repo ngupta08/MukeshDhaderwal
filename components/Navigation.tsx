@@ -23,7 +23,7 @@ export default function Navigation() {
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center gap-3">
               <Image 
-                src="/logo.jpeg" 
+                src="/logo.svg" 
                 alt="Mano Unnati Neuropsychiatry and De-addiction Care" 
                 width={48}
                 height={48}
@@ -47,10 +47,10 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <a href="tel:+919413405487">
+            <a href="tel:+919509046236">
               <Button variant="primary" className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                +91-9413405487
+                095090 46236
               </Button>
             </a>
           </div>
@@ -78,10 +78,10 @@ export default function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <a href="tel:+919413405487" className="w-full">
+              <a href="tel:+919509046236" className="w-full">
                 <Button variant="primary" className="w-full flex items-center justify-center gap-2">
                   <Phone className="w-4 h-4" />
-                  +91-9413405487
+                  095090 46236
                 </Button>
               </a>
             </div>

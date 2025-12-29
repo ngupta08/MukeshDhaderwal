@@ -56,7 +56,7 @@ export default function ClinicPhotos() {
             Visit Us
           </h2>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
-            Conveniently located at SMS Medical College & Hospital, Jaipur. We're here to provide expert psychiatric care in a professional setting.
+            Conveniently located at Vaidh Ji ka Chouraha, Pratap Nagar Extension, Murlipura, Jaipur. We&apos;re here to provide expert psychiatric care in a professional setting.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function ClinicPhotos() {
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-1 drop-shadow-md">Location</h3>
-                  <p className="text-sm text-white/90 drop-shadow-sm">SMS Medical College & Hospital, Jaipur</p>
+                  <p className="text-sm text-white/90 drop-shadow-sm">316, Pratapnagar Extension, Vaidh Ji ka Chouraha, Pratap Nagar Vistar, Murlipura Scheme, Murlipura, Jaipur, Rajasthan 302039</p>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function ClinicPhotos() {
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-1 drop-shadow-md">Contact</h3>
-                  <p className="text-sm text-white/90 drop-shadow-sm">+91-9413405487</p>
+                  <p className="text-sm text-white/90 drop-shadow-sm">095090 46236</p>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function ClinicPhotos() {
             Experience compassionate care in a comfortable environment
           </p>
           <a
-            href="tel:+919413405487"
+            href="tel:+919509046236"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white/90 backdrop-blur-sm text-teal-700 font-semibold rounded-xl hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl border-2 border-white/50"
           >
             <Phone className="w-5 h-5" />
