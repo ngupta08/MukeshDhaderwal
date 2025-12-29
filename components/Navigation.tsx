@@ -47,10 +47,12 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button variant="primary" className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              (555) 123-4567
-            </Button>
+            <a href="tel:+919413405487">
+              <Button variant="primary" className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                +91-9413405487
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -76,10 +78,12 @@ export default function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <Button variant="primary" className="w-full flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4" />
-                (555) 123-4567
-              </Button>
+              <a href="tel:+919413405487" className="w-full">
+                <Button variant="primary" className="w-full flex items-center justify-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  +91-9413405487
+                </Button>
+              </a>
             </div>
           </div>
         )}
