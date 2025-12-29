@@ -214,6 +214,20 @@ export default function Footer() {
               <a href="#" className="hover:text-teal-400 transition-colors">Terms of Service</a>
             </div>
           </div>
+          {/* Made by attribution - subtle and professional */}
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gray-500">
+              Made with ❤️ by{' '}
+              <a 
+                href="https://www.dataplayconsulting.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
+              >
+                DataPlay Consulting
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
