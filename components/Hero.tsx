@@ -5,6 +5,9 @@ import { Button } from './ui'
 import { Phone, Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, ArrowRight, Brain, Users, Sparkles, Star, ChevronDown, Globe, TrendingUp, MessageCircle, PlayCircle } from 'lucide-react'
 
 export default function Hero() {
+  const phoneNumber = '919509046236'
+  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Full Background Image */}
@@ -40,54 +43,30 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
         {/* Mobile Layout */}
         <div className="lg:hidden">
-          <div className="flex flex-col items-center text-center space-y-6">
+          <div className="flex flex-col items-center text-center">
             {/* Trust Badge with Doctor Name and NIMHANS - Mobile */}
-            <div className="w-full max-w-sm">
+            <div className="w-full max-w-sm mb-6">
               <div className="relative px-5 py-3 bg-gradient-to-r from-teal-600/95 to-cyan-600/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 flex items-center gap-3">
                 <div className="flex-1">
                   <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-3.5 h-3.5 text-white drop-shadow-md" />
-                    <span className="text-white font-medium text-xs drop-shadow-md">NIMHANS MD Psychiatry</span>
+                    <span className="text-white font-medium text-xs drop-shadow-md">MD Psychiatry NIMHANS</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Main Headline - Mobile */}
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight drop-shadow-2xl px-2">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight drop-shadow-2xl px-2 mb-36 md:mb-48">
               We Take Care
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-cyan-200 to-emerald-200 mt-1 drop-shadow-xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
                 of Your Mental Health
               </span>
             </h1>
-            
-            {/* Subtitle - Mobile */}
-            <p className="text-base sm:text-lg text-white leading-relaxed px-4 font-medium drop-shadow-xl" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.7)' }}>
-              Expert psychiatric care with compassion. NIMHANS-trained psychiatrist providing personalized treatment for anxiety, depression, mood disorders, and more.
-            </p>
-
-            {/* CTA Buttons - Mobile */}
-            <div className="flex flex-col w-full max-w-sm gap-3 px-4">
-              <Button 
-                variant="primary" 
-                className="w-full px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
-              >
-                <Calendar className="w-5 h-5" />
-                Book an Appointment
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-              >
-                <Phone className="w-4 h-4" />
-                Call Now
-              </Button>
-            </div>
 
             {/* Trust Cards - Mobile (Stacked) */}
-            <div className="w-full max-w-sm space-y-3 px-4 mt-4">
+            <div className="w-full max-w-sm space-y-3 px-4 mb-8">
               {/* Ex Neuro Psychiatrist Card - Mobile */}
               <div className="w-full bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-3 border-2 border-teal-300/80">
                 <div className="flex items-center gap-3">
@@ -129,6 +108,36 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+
+            {/* CTA Buttons - Mobile - Positioned below doctor's face */}
+            <div className="flex flex-col w-full max-w-sm gap-3 px-4 mt-8">
+              <Button 
+                variant="primary" 
+                className="w-full px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
+              >
+                <Calendar className="w-5 h-5" />
+                Book an Appointment
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+              <div className="flex gap-3">
+                <Button 
+                  variant="outline" 
+                  className="flex-1 px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </Button>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -143,43 +152,19 @@ export default function Hero() {
                   <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-3.5 h-3.5 text-white drop-shadow-md" />
-                    <span className="text-white font-medium text-xs drop-shadow-md">NIMHANS MD Psychiatry</span>
+                    <span className="text-white font-medium text-xs drop-shadow-md">MD Psychiatry NIMHANS</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Main Headline - Tablet */}
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight drop-shadow-2xl">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-36 leading-tight drop-shadow-2xl">
               We Take Care
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-cyan-200 to-emerald-200 mt-1 drop-shadow-xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
                 of Your Mental Health
               </span>
             </h1>
-            
-            {/* Subtitle - Tablet */}
-            <p className="text-lg md:text-xl text-white mb-6 leading-relaxed font-medium drop-shadow-xl" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.7)' }}>
-              Expert psychiatric care with compassion. NIMHANS-trained psychiatrist providing personalized treatment for anxiety, depression, mood disorders, and more.
-            </p>
-
-            {/* CTA Buttons - Tablet */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
-              <Button 
-                variant="primary" 
-                className="px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
-              >
-                <Calendar className="w-5 h-5" />
-                Book Appointment
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-              >
-                <Phone className="w-4 h-4" />
-                Call Now
-              </Button>
-            </div>
           </div>
 
           {/* Right Column - Tablet Trust Cards */}
@@ -225,6 +210,34 @@ export default function Hero() {
               </div>
             </div>
           </div>
+
+          {/* CTA Buttons - Tablet - Positioned below doctor's face */}
+          <div className="col-span-2 flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <Button 
+              variant="primary" 
+              className="px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
+            >
+              <Calendar className="w-5 h-5" />
+              Book Appointment
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button 
+              variant="outline" 
+              className="px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
+            >
+              <Phone className="w-4 h-4" />
+              Call Now
+            </Button>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp
+            </a>
+          </div>
         </div>
 
         {/* Desktop Layout (lg and above) */}
@@ -238,14 +251,14 @@ export default function Hero() {
                   <div className="text-white font-bold text-lg mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-4 h-4 text-white drop-shadow-md" />
-                    <span className="text-white font-medium text-sm drop-shadow-md">NIMHANS MD Psychiatry</span>
+                    <span className="text-white font-medium text-sm drop-shadow-md">MD Psychiatry NIMHANS</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Main Headline - Patient-focused */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-36 leading-tight drop-shadow-2xl">
               We Take Care
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-cyan-200 to-emerald-200 mt-2 drop-shadow-xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}>
                 of Your Mental Health
@@ -256,25 +269,6 @@ export default function Hero() {
             <p className="text-xl md:text-2xl text-white mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium drop-shadow-xl" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.7)' }}>
               Expert psychiatric care with compassion. NIMHANS-trained psychiatrist providing personalized treatment for anxiety, depression, mood disorders, and more.
             </p>
-
-            {/* CTA Buttons - Enhanced */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button 
-                variant="primary" 
-                className="px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
-              >
-                <Calendar className="w-6 h-6" />
-                Book an Appointment
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="px-8 py-4 text-lg border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-3 bg-white rounded-xl font-semibold shadow-lg"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now
-              </Button>
-            </div>
 
           </div>
 
@@ -345,6 +339,34 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* CTA Buttons - Desktop - Positioned below doctor's face */}
+          <div className="lg:col-span-12 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8 mb-12">
+            <Button 
+              variant="primary" 
+              className="px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
+            >
+              <Calendar className="w-6 h-6" />
+              Book an Appointment
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              className="px-8 py-4 text-lg border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-3 bg-white rounded-xl font-semibold shadow-lg"
+            >
+              <Phone className="w-5 h-5" />
+              Call Now
+            </Button>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 text-lg border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-3 rounded-xl font-semibold shadow-lg transition-all"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp
+            </a>
           </div>
         </div>
 
