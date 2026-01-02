@@ -56,7 +56,7 @@ export default function ClinicPhotos() {
             Visit Us
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md leading-relaxed">
-            Conveniently located at Vaidh Ji ka Chouraha, Pratap Nagar Extension, Murlipura, Jaipur. We&apos;re here to provide expert psychiatric care in a professional setting.
+            Conveniently located at Vaidh Ji ka Chouraha, Pratapnagar Extension, Murlipura, Jaipur. We&apos;re here to provide expert psychiatric care in a professional setting.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function ClinicPhotos() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-white mb-2 sm:mb-1 drop-shadow-md text-base sm:text-lg">Location</h3>
-                  <p className="text-xs sm:text-sm text-white/90 drop-shadow-sm leading-relaxed break-words">316, Pratapnagar Extension, Vaidh Ji ka Chouraha, Pratap Nagar Vistar, Murlipura Scheme, Murlipura, Jaipur, Rajasthan 302039</p>
+                  <p className="text-xs sm:text-sm text-white/90 drop-shadow-sm leading-relaxed break-words">Vaidh Ji ka Chouraha, 316, Pratapnagar Extension Vaidh Ji ka Chauaraha, 282, Vaidhji ka Chouraha, Pratap Nagar Vistar, Murlipura Scheme, Murlipura, Jaipur, Rajasthan 302039</p>
                 </div>
               </div>
             </div>

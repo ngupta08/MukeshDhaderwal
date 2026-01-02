@@ -131,8 +131,7 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="leading-relaxed">
-                    G1, 3/264, &quot;Mano Unnati&quot; Neuro-Psychiatric, De-addiction & Counselling Clinic, 
-                    Chitrakoot Sector-3, Near Chitrakoot Stadium, Jaipur - 302021
+                    Vaidh Ji ka Chouraha, 316, Pratapnagar Extension Vaidh Ji ka Chauaraha, 282, Vaidhji ka Chouraha, Pratap Nagar Vistar, Murlipura Scheme, Murlipura, Jaipur, Rajasthan 302039
                   </p>
                 </div>
               </div>
