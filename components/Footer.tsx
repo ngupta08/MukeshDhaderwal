@@ -149,14 +149,14 @@ export default function Footer() {
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                <a 
-                  href="tel:+919509046236" 
-                  className="hover:text-teal-400 transition-colors"
-                >
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
+                  <a 
+                    href="tel:+919509046236" 
+                    className="hover:text-teal-400 transition-colors"
+                  >
                   095090 46236
-                </a>
+                  </a>
               </div>
 
               {/* Social Media */}

@@ -2,12 +2,9 @@
 
 import Image from 'next/image'
 import { Button } from './ui'
-import { Phone, Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, ArrowRight, Brain, Users, Sparkles, Star, ChevronDown, Globe, TrendingUp, MessageCircle, PlayCircle } from 'lucide-react'
+import { Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, ArrowRight, Brain, Users, Sparkles, Star, ChevronDown, Globe, TrendingUp, PlayCircle } from 'lucide-react'
 
 export default function Hero() {
-  const phoneNumber = '919509046236'
-  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Full Background Image */}
@@ -119,24 +116,6 @@ export default function Hero() {
                 Book an Appointment
                 <ArrowRight className="w-4 h-4" />
               </Button>
-              <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
-                  className="flex-1 px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-                >
-                  <Phone className="w-4 h-4" />
-                  Call Now
-                </Button>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -221,22 +200,6 @@ export default function Hero() {
               Book Appointment
               <ArrowRight className="w-4 h-4" />
             </Button>
-            <Button 
-              variant="outline" 
-              className="px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-            </Button>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
-            </a>
           </div>
         </div>
 
@@ -351,22 +314,6 @@ export default function Hero() {
               Book an Appointment
               <ArrowRight className="w-5 h-5" />
             </Button>
-            <Button 
-              variant="outline" 
-              className="px-8 py-4 text-lg border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-3 bg-white rounded-xl font-semibold shadow-lg"
-            >
-              <Phone className="w-5 h-5" />
-              Call Now
-            </Button>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 text-lg border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-3 rounded-xl font-semibold shadow-lg transition-all"
-            >
-              <MessageCircle className="w-5 h-5" />
-              WhatsApp
-            </a>
           </div>
         </div>
 
