@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from './ui'
-import { Phone, Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, ArrowRight, Brain, Users, Sparkles, Star, ChevronDown, Globe, TrendingUp, MessageCircle, PlayCircle } from 'lucide-react'
+import { Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, ArrowRight, Brain, Users, Sparkles, Star, ChevronDown, Globe, TrendingUp, PlayCircle } from 'lucide-react'
 
 export default function Hero() {
   const phoneNumber = '919509046236'
@@ -111,32 +111,16 @@ export default function Hero() {
 
             {/* CTA Buttons - Mobile - Positioned below doctor's face */}
             <div className="flex flex-col w-full max-w-sm gap-3 px-4 mt-8">
-              <Button 
-                variant="primary" 
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
               >
                 <Calendar className="w-5 h-5" />
                 Book an Appointment
                 <ArrowRight className="w-4 h-4" />
-              </Button>
-              <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
-                  className="flex-1 px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-                >
-                  <Phone className="w-4 h-4" />
-                  Call Now
-                </Button>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp
-                </a>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -213,29 +197,15 @@ export default function Hero() {
 
           {/* CTA Buttons - Tablet - Positioned below doctor's face */}
           <div className="col-span-2 flex flex-col sm:flex-row gap-3 justify-center mt-8">
-            <Button 
-              variant="primary" 
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
             >
               <Calendar className="w-5 h-5" />
               Book Appointment
               <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button 
-              variant="outline" 
-              className="px-6 py-3 text-base border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-2 bg-white rounded-xl font-semibold shadow-lg"
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-            </Button>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 text-base border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-2 rounded-xl font-semibold shadow-lg transition-all"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
             </a>
           </div>
         </div>
@@ -343,29 +313,15 @@ export default function Hero() {
 
           {/* CTA Buttons - Desktop - Positioned below doctor's face */}
           <div className="lg:col-span-12 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8 mb-12">
-            <Button 
-              variant="primary" 
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl"
             >
               <Calendar className="w-6 h-6" />
               Book an Appointment
               <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              className="px-8 py-4 text-lg border-2 border-teal-600 text-teal-600 hover:bg-teal-50 flex items-center justify-center gap-3 bg-white rounded-xl font-semibold shadow-lg"
-            >
-              <Phone className="w-5 h-5" />
-              Call Now
-            </Button>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 text-lg border-2 border-[#25D366] bg-[#25D366] hover:bg-[#20BA5A] text-white flex items-center justify-center gap-3 rounded-xl font-semibold shadow-lg transition-all"
-            >
-              <MessageCircle className="w-5 h-5" />
-              WhatsApp
             </a>
           </div>
         </div>
