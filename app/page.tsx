@@ -4,6 +4,7 @@ import Specializations from '@/components/Specializations'
 import ClinicPhotos from '@/components/ClinicPhotos'
 import Gallery from '@/components/Gallery'
 import YouTubeVideos from '@/components/YouTubeVideos'
+import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import Blog from '@/components/Blog'
@@ -30,6 +31,7 @@ export default async function Home() {
       <Gallery />
       <YouTubeVideos />
       {recentPosts.length > 0 && <Blog posts={recentPosts} />}
+      <FAQ />
       <Footer />
       <WhatsAppButton />
     </main>

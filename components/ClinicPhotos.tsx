@@ -1,10 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { MapPin, Clock, Phone } from 'lucide-react'
+import { MapPin, Clock, Phone, Calendar } from 'lucide-react'
 import { clinicPhotos, getClinicPhotoUrl } from '@/data/clinicPhotos'
 
 export default function ClinicPhotos() {
+  const phoneNumber = '919509046236'
+  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   // Get the first available clinic image for background, or use a default
   const backgroundImage = clinicPhotos.length > 0 && clinicPhotos[0] 
     ? getClinicPhotoUrl(clinicPhotos[0]) 
@@ -114,10 +117,12 @@ export default function ClinicPhotos() {
             Experience compassionate care in a comfortable environment
           </p>
           <a
-            href="tel:+919509046236"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white/90 backdrop-blur-sm text-teal-700 font-semibold rounded-xl hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl border-2 border-white/50 text-sm sm:text-base"
           >
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
             Book Your Visit
           </a>
         </div>

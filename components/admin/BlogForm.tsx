@@ -7,6 +7,7 @@ import { ArrowLeft, Upload, X, Loader2, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import { BlogPost, BlogPostInput } from '@/types/blog'
 import { removeAuthToken } from '@/lib/auth'
+import TiptapEditor from './TiptapEditor'
 
 interface BlogFormProps {
   post?: BlogPost
@@ -260,22 +261,18 @@ export default function BlogForm({ post, mode }: BlogFormProps) {
             </div>
           </div>
 
-          {/* Content - Text/HTML */}
+          {/* Content - Tiptap Editor */}
           <div>
             <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-2">
-              Blog Content (Text/HTML) *
+              Blog Content *
             </label>
-            <textarea
-              id="content"
-              required
-              rows={15}
-              value={formData.content}
-              onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 font-mono text-sm"
-              placeholder="Enter your blog content here. You can use HTML tags like &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;, etc."
+            <TiptapEditor
+              content={formData.content}
+              onChange={(content) => setFormData({ ...formData, content })}
+              placeholder="Start writing your blog content here. Use the toolbar above to format your text, add headings, lists, links, and images."
             />
-            <p className="mt-1 text-sm text-gray-500">
-              Enter your blog content. You can use HTML tags for formatting. Content is stored in NeonDB.
+            <p className="mt-2 text-sm text-gray-500">
+              Use the rich text editor to format your content. Content is stored as HTML in NeonDB.
             </p>
           </div>
 
