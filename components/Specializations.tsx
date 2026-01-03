@@ -11,7 +11,8 @@ import {
   Heart,
   Moon,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Calendar
 } from 'lucide-react'
 
 interface Specialization {
@@ -101,6 +102,10 @@ const specializations: Specialization[] = [
 ]
 
 export default function Specializations() {
+  const phoneNumber = '919509046236'
+  const message = encodeURIComponent('Hello, I would like to schedule a consultation with Dr. Mukesh Dhaderwal.')
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+
   return (
     <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
       {/* Background decorative elements */}
@@ -271,9 +276,12 @@ export default function Specializations() {
             Not sure which specialization fits your needs?
           </p>
           <a
-            href="#contact"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
+            <Calendar className="w-5 h-5" />
             <span>Schedule a Consultation</span>
             <ArrowRight className="w-5 h-5" />
           </a>
