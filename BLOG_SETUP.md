@@ -46,7 +46,7 @@ CLOUDINARY_API_SECRET=your_api_secret
        "excerpt": "A brief description of your post",
        "content": "<p>Your blog post content in HTML format</p>",
        "coverImage": "https://res.cloudinary.com/your-cloud/image/upload/example.jpg",
-       "author": "Dr. Mukesh Dhaderwal",
+       "author": "Dr. Mukesh Chand Daderwal",
        "published": true,
        "category": "Mental Health",
        "tags": ["wellness", "psychiatry"]

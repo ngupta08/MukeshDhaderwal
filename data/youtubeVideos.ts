@@ -13,31 +13,31 @@ export interface YouTubeVideo {
 export const youtubeVideos: YouTubeVideo[] = [
   {
     id: '1',
-    title: 'Mental Health Secrets: Anxiety, Overthinking Aur Depression Ka Asli Raasta ft. Dr. Mukesh Daderwal',
-    description: 'An informative session about mental health awareness, anxiety, overthinking, and depression with expert insights from Dr. Mukesh Daderwal.',
+    title: 'Mental Health Secrets: Anxiety, Overthinking Aur Depression Ka Asli Raasta ft. Dr. Mukesh Chand Daderwal',
+    description: 'An informative session about mental health awareness, anxiety, overthinking, and depression with expert insights from Dr. Mukesh Chand Daderwal.',
     videoId: '28-dH0gxnvQ',
     category: 'Education',
     date: 'Jul 2025'
   },
   {
     id: '2',
-    title: 'Dementia Myths vs. Facts: What You Need to Know with renowned Neuropsychiatrist Dr. Mukesh Daderwal!',
-    description: 'In this informative session, Dr. Mukesh Daderwal addresses common misconceptions about dementia, providing clarity and expert insights to help you understand the condition better.',
+    title: 'Dementia Myths vs. Facts: What You Need to Know with renowned Neuropsychiatrist Dr. Mukesh Chand Daderwal!',
+    description: 'In this informative session, Dr. Mukesh Chand Daderwal addresses common misconceptions about dementia, providing clarity and expert insights to help you understand the condition better.',
     videoId: 'wr3ubFb2N7Y',
     category: 'Education',
     date: 'Sep 2025'
   },
   {
     id: '3',
-    title: 'Mental Health and Wellness with Dr. Mukesh Daderwal',
-    description: 'Expert insights on mental health, wellness, and psychiatric care from Dr. Mukesh Daderwal.',
+    title: 'Mental Health and Wellness with Dr. Mukesh Chand Daderwal',
+    description: 'Expert insights on mental health, wellness, and psychiatric care from Dr. Mukesh Chand Daderwal.',
     videoId: 'AWM_I576R1s',
     category: 'Health',
     date: 'Oct 2022'
   },
   {
     id: '4',
-    title: 'Understanding Mental Health Disorders with Dr. Mukesh Daderwal',
+    title: 'Understanding Mental Health Disorders with Dr. Mukesh Chand Daderwal',
     description: 'Comprehensive discussion about mental health disorders, their symptoms, and treatment approaches.',
     videoId: 'oZvNJKcTAbs',
     category: 'Education',

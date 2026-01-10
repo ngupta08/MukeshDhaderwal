@@ -6,7 +6,7 @@ import { clinicPhotos, getClinicPhotoUrl } from '@/data/clinicPhotos'
 
 export default function ClinicPhotos() {
   const phoneNumber = '919509046236'
-  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
+  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Chand Daderwal.')
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   // Get the first available clinic image for background, or use a default
   const backgroundImage = clinicPhotos.length > 0 && clinicPhotos[0] 

@@ -29,7 +29,7 @@ export default function BlogForm({ post, mode }: BlogFormProps) {
     excerpt: post?.excerpt || '',
     content: post?.content || '', // Blog content text/HTML
     coverImage: post?.coverImage || '',
-    author: post?.author || 'Dr. Mukesh Dhaderwal',
+    author: post?.author || 'Dr. Mukesh Chand Daderwal',
     published: post?.published || false,
     category: post?.category || '',
     tags: post?.tags || [],
@@ -288,7 +288,7 @@ export default function BlogForm({ post, mode }: BlogFormProps) {
               value={formData.author}
               onChange={(e) => setFormData({ ...formData, author: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="Dr. Mukesh Dhaderwal"
+              placeholder="Dr. Mukesh Chand Daderwal"
             />
           </div>
 

@@ -6,7 +6,7 @@ import { Calendar, Shield, Heart, Stethoscope, Award, Clock, CheckCircle2, Arrow
 
 export default function Hero() {
   const phoneNumber = '919509046236'
-  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
+  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Chand Daderwal.')
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -48,7 +48,7 @@ export default function Hero() {
             <div className="w-full max-w-sm mb-6">
               <div className="relative px-5 py-3 bg-gradient-to-r from-teal-600/95 to-cyan-600/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 flex items-center gap-3">
                 <div className="flex-1">
-                  <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
+                  <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Chand Daderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-3.5 h-3.5 text-white drop-shadow-md" />
                     <span className="text-white font-medium text-xs drop-shadow-md">MD Psychiatry NIMHANS</span>
@@ -74,8 +74,8 @@ export default function Hero() {
                     <Stethoscope className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-left flex-1">
-                    <div className="text-gray-900 font-bold text-xs">Ex Neuro Psychiatrist</div>
-                    <div className="text-teal-600 font-semibold text-[10px]">@ SMS Medical College</div>
+                    <div className="text-gray-900 font-bold text-xs">Ex Astt Professor</div>
+                    <div className="text-teal-600 font-semibold text-[10px]">SMS Medical college</div>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function Hero() {
             <div className="mb-6">
               <div className="relative px-5 py-3 bg-gradient-to-r from-teal-600/95 to-cyan-600/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 inline-flex items-center gap-3">
                 <div>
-                  <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
+                  <div className="text-white font-bold text-base mb-1 drop-shadow-lg">Dr. Mukesh Chand Daderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-3.5 h-3.5 text-white drop-shadow-md" />
                     <span className="text-white font-medium text-xs drop-shadow-md">MD Psychiatry NIMHANS</span>
@@ -160,8 +160,8 @@ export default function Hero() {
                   <Stethoscope className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left flex-1">
-                  <div className="text-gray-900 font-bold text-sm">Ex Neuro Psychiatrist</div>
-                  <div className="text-teal-600 font-semibold text-xs">@ SMS Medical College</div>
+                  <div className="text-gray-900 font-bold text-sm">Ex Astt Professor</div>
+                  <div className="text-teal-600 font-semibold text-xs">SMS Medical college</div>
                 </div>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 mb-8">
               <div className="relative px-6 py-4 bg-gradient-to-r from-teal-600/95 to-cyan-600/95 backdrop-blur-sm rounded-xl shadow-2xl border border-white/20 flex items-center gap-4">
                 <div className="flex-1">
-                  <div className="text-white font-bold text-lg mb-1 drop-shadow-lg">Dr. Mukesh Dhaderwal</div>
+                  <div className="text-white font-bold text-lg mb-1 drop-shadow-lg">Dr. Mukesh Chand Daderwal</div>
                   <div className="flex items-center gap-2">
                     <Award className="w-4 h-4 text-white drop-shadow-md" />
                     <span className="text-white font-medium text-sm drop-shadow-md">MD Psychiatry NIMHANS</span>
@@ -260,8 +260,8 @@ export default function Hero() {
                   <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mb-3 shadow-md">
                     <Stethoscope className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-gray-900 font-bold text-sm mb-1">Ex Neuro Psychiatrist</div>
-                  <div className="text-teal-600 font-semibold text-xs">@ SMS Medical College</div>
+                  <div className="text-gray-900 font-bold text-sm mb-1">Ex Astt Professor</div>
+                  <div className="text-teal-600 font-semibold text-xs">SMS Medical college</div>
                 </div>
               </div>
 
