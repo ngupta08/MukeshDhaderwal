@@ -2,7 +2,7 @@
 
 export default function WhatsAppButton() {
   const phoneNumber = '919509046236'
-  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Dhaderwal.')
+  const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Chand Daderwal.')
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
 
   return (

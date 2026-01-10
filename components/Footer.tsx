@@ -27,7 +27,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Dr. Mukesh Dhaderwal is a psychiatrist whose passion is his occupation. 
+              Dr. Mukesh Chand Daderwal is a psychiatrist whose passion is his occupation. 
               MBBS, MD Psychiatrist, trained at National Institute of Mental Health and 
               Neuroscience (NIMHANS), Bangalore. Currently working at SMS Medical College 
               and Hospital, Jaipur, Rajasthan. Specialized in child psychiatry, geriatric 
@@ -140,10 +140,10 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-teal-400 flex-shrink-0" />
                 <a 
-                  href="mailto:dr.mukeshdhaderwal@gmail.com" 
+                  href="mailto:psychiatriccare4u@gmail.com" 
                   className="hover:text-teal-400 transition-colors"
                 >
-                  dr.mukeshdhaderwal@gmail.com
+                  psychiatriccare4u@gmail.com
                 </a>
               </div>
 

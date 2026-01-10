@@ -53,7 +53,7 @@ const faqData: FAQItem[] = [
   {
     id: '9',
     question: 'What is the difference between a psychiatrist and a psychologist?',
-    answer: 'A psychiatrist is a medical doctor (MD) who can diagnose mental health conditions, prescribe medications, and provide both medication management and therapy. A psychologist typically provides therapy and psychological testing but cannot prescribe medications. Dr. Mukesh Dhaderwal is a psychiatrist with MD in Psychiatry from NIMHANS, providing comprehensive psychiatric care including medication management and therapy.'
+    answer: 'A psychiatrist is a medical doctor (MD) who can diagnose mental health conditions, prescribe medications, and provide both medication management and therapy. A psychologist typically provides therapy and psychological testing but cannot prescribe medications. Dr. Mukesh Chand Daderwal is a psychiatrist with MD in Psychiatry from NIMHANS, providing comprehensive psychiatric care including medication management and therapy.'
   },
   {
     id: '10',

@@ -103,7 +103,7 @@ const specializations: Specialization[] = [
 
 export default function Specializations() {
   const phoneNumber = '919509046236'
-  const message = encodeURIComponent('Hello, I would like to schedule a consultation with Dr. Mukesh Dhaderwal.')
+  const message = encodeURIComponent('Hello, I would like to schedule a consultation with Dr. Mukesh Chand Daderwal.')
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
 
   return (
