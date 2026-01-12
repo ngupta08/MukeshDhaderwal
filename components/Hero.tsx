@@ -9,7 +9,7 @@ export default function Hero() {
   const message = encodeURIComponent('Hello, I would like to book an appointment with Dr. Mukesh Chand Daderwal.')
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Full Background Image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
