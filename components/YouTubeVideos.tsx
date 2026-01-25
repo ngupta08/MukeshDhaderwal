@@ -1,13 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Play, Clock, Calendar, X, ExternalLink } from 'lucide-react'
-import { youtubeVideos, getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from '@/data/youtubeVideos'
+import { youtubeVideos, getYouTubeEmbedUrl, getYouTubeThumbnailUrl, YouTubeVideo } from '@/data/youtubeVideos'
 
 export default function YouTubeVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [hoveredVideo, setHoveredVideo] = useState<string | null>(null)
+  const [videos, setVideos] = useState<YouTubeVideo[]>(youtubeVideos)
+  const [channelUrl, setChannelUrl] = useState<string>('https://www.youtube.com/@Daderwalmukesh')
+  const [isLoading, setIsLoading] = useState(true)
 
   const openVideo = (videoId: string) => {
     setSelectedVideo(videoId)
@@ -16,6 +19,33 @@ export default function YouTubeVideos() {
   const closeVideo = () => {
     setSelectedVideo(null)
   }
+
+  useEffect(() => {
+    // Fetch videos from YouTube channel
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('/api/youtube')
+        const data = await response.json()
+        
+        if (data.videos && data.videos.length > 0) {
+          setVideos(data.videos)
+          if (data.channelUrl) {
+            setChannelUrl(data.channelUrl)
+          }
+        } else {
+          // Keep using static videos as fallback
+          console.warn('No videos fetched from API, using static data')
+        }
+      } catch (error) {
+        console.error('Error fetching YouTube videos:', error)
+        // Keep using static videos as fallback
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchVideos()
+  }, [])
 
   return (
     <>
@@ -60,8 +90,15 @@ export default function YouTubeVideos() {
           {/* Video Grid - Horizontal scroll on mobile, grid on larger screens */}
           <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8">
             {/* Mobile: Horizontal scrollable container */}
-            <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
-              {youtubeVideos.map((video) => {
+            {isLoading ? (
+              <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4">
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+              </div>
+            ) : (
+              <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
+                {videos.map((video) => {
                 const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
                 const isHovered = hoveredVideo === video.id
                 
@@ -137,10 +174,18 @@ export default function YouTubeVideos() {
                   </div>
                 )
               })}
-            </div>
+              </div>
+            )}
 
             {/* Desktop: Grid layout */}
-            {youtubeVideos.map((video) => {
+            {isLoading ? (
+              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="bg-gray-200 animate-pulse rounded-2xl h-80"></div>
+                ))}
+              </div>
+            ) : (
+              videos.map((video) => {
               const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
               const isHovered = hoveredVideo === video.id
               
@@ -215,13 +260,14 @@ export default function YouTubeVideos() {
                   <div className="absolute inset-0 border-2 border-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               )
-            })}
+            })
+            )}
           </div>
 
           {/* View More Button */}
           <div className="mt-12 md:mt-16 text-center">
             <a
-              href="https://www.youtube.com/@yourchannel" // Replace with actual YouTube channel URL
+              href={channelUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
