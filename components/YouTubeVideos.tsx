@@ -8,9 +8,10 @@ import { youtubeVideos, getYouTubeEmbedUrl, getYouTubeThumbnailUrl, YouTubeVideo
 export default function YouTubeVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [hoveredVideo, setHoveredVideo] = useState<string | null>(null)
-  const [videos, setVideos] = useState<YouTubeVideo[]>(youtubeVideos)
+  const [videos, setVideos] = useState<YouTubeVideo[]>([])
   const [channelUrl, setChannelUrl] = useState<string>('https://www.youtube.com/@Daderwalmukesh')
   const [isLoading, setIsLoading] = useState(true)
+  const [apiError, setApiError] = useState<string | null>(null)
 
   const openVideo = (videoId: string) => {
     setSelectedVideo(videoId)
@@ -24,21 +25,53 @@ export default function YouTubeVideos() {
     // Fetch videos from YouTube channel
     const fetchVideos = async () => {
       try {
+        console.log('Fetching videos from YouTube API...')
         const response = await fetch('/api/youtube')
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
         const data = await response.json()
         
-        if (data.videos && data.videos.length > 0) {
+        console.log('YouTube API response:', data)
+        
+        if (data.error) {
+          console.error('YouTube API error:', data.error, data.errorMessage || data.debug)
+          setApiError(data.errorMessage || data.error || 'Failed to fetch videos')
+          // Fallback to static videos only if API completely fails
+          if (youtubeVideos.length > 0) {
+            console.warn('Using static videos as fallback due to API error')
+            setVideos(youtubeVideos)
+          }
+          setIsLoading(false)
+          return
+        }
+        
+        if (data.videos && Array.isArray(data.videos) && data.videos.length > 0) {
+          console.log(`✅ Successfully loaded ${data.videos.length} videos from YouTube`)
           setVideos(data.videos)
+          setApiError(null)
           if (data.channelUrl) {
             setChannelUrl(data.channelUrl)
           }
         } else {
-          // Keep using static videos as fallback
-          console.warn('No videos fetched from API, using static data')
+          console.warn('No videos in API response. Response data:', data)
+          setApiError('No videos found in API response')
+          // Fallback to static videos
+          if (youtubeVideos.length > 0) {
+            console.warn('Using static videos as fallback - no videos in API response')
+            setVideos(youtubeVideos)
+          }
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error fetching YouTube videos:', error)
-        // Keep using static videos as fallback
+        setApiError(error?.message || 'Failed to fetch videos from YouTube')
+        // Fallback to static videos
+        if (youtubeVideos.length > 0) {
+          console.warn('Using static videos as fallback due to fetch error')
+          setVideos(youtubeVideos)
+        }
       } finally {
         setIsLoading(false)
       }
@@ -85,6 +118,16 @@ export default function YouTubeVideos() {
               Explore our collection of informative videos on mental health, wellness, and psychiatric care. 
               Learn from expert insights and evidence-based information.
             </p>
+            {apiError && (
+              <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg text-sm">
+                ⚠️ API Error: {apiError}. Showing fallback videos.
+              </div>
+            )}
+            {!isLoading && !apiError && videos.length > 0 && (
+              <div className="mt-4 p-3 bg-green-100 border border-green-400 text-green-800 rounded-lg text-sm">
+                ✅ Loaded {videos.length} videos from YouTube
+              </div>
+            )}
           </div>
 
           {/* Video Grid - Horizontal scroll on mobile, grid on larger screens */}
