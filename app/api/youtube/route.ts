@@ -162,7 +162,7 @@ export async function GET() {
     
     // Fetch videos in batches (YouTube API max is 50 per request)
     do {
-      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${apiKey}&order=date${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`
+      const url: string = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${apiKey}&order=date${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`
       
       const playlistResponse = await fetch(url)
 

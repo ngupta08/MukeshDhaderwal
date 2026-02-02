@@ -19,10 +19,14 @@ export default function ClinicPhotos() {
       {backgroundImage && backgroundImage !== '/clinic/placeholder.jpg' && (
         <div className="absolute inset-0 z-0">
           {backgroundImage.startsWith('http') ? (
-            <img
+            <Image
               src={backgroundImage}
               alt="Clinic"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
+              unoptimized
             />
           ) : (
             <Image
