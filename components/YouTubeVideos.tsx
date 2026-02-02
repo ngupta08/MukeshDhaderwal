@@ -1,13 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Play, Clock, Calendar, X, ExternalLink } from 'lucide-react'
-import { youtubeVideos, getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from '@/data/youtubeVideos'
+import { youtubeVideos, getYouTubeEmbedUrl, getYouTubeThumbnailUrl, YouTubeVideo } from '@/data/youtubeVideos'
 
 export default function YouTubeVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [hoveredVideo, setHoveredVideo] = useState<string | null>(null)
+  const [videos, setVideos] = useState<YouTubeVideo[]>([])
+  const [channelUrl, setChannelUrl] = useState<string>('https://www.youtube.com/@Daderwalmukesh')
+  const [isLoading, setIsLoading] = useState(true)
+  const [apiError, setApiError] = useState<string | null>(null)
 
   const openVideo = (videoId: string) => {
     setSelectedVideo(videoId)
@@ -16,6 +20,65 @@ export default function YouTubeVideos() {
   const closeVideo = () => {
     setSelectedVideo(null)
   }
+
+  useEffect(() => {
+    // Fetch videos from YouTube channel
+    const fetchVideos = async () => {
+      try {
+        console.log('Fetching videos from YouTube API...')
+        const response = await fetch('/api/youtube')
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
+        const data = await response.json()
+        
+        console.log('YouTube API response:', data)
+        
+        if (data.error) {
+          console.error('YouTube API error:', data.error, data.errorMessage || data.debug)
+          setApiError(data.errorMessage || data.error || 'Failed to fetch videos')
+          // Fallback to static videos only if API completely fails
+          if (youtubeVideos.length > 0) {
+            console.warn('Using static videos as fallback due to API error')
+            setVideos(youtubeVideos)
+          }
+          setIsLoading(false)
+          return
+        }
+        
+        if (data.videos && Array.isArray(data.videos) && data.videos.length > 0) {
+          console.log(`✅ Successfully loaded ${data.videos.length} videos from YouTube`)
+          setVideos(data.videos)
+          setApiError(null)
+          if (data.channelUrl) {
+            setChannelUrl(data.channelUrl)
+          }
+        } else {
+          console.warn('No videos in API response. Response data:', data)
+          setApiError('No videos found in API response')
+          // Fallback to static videos
+          if (youtubeVideos.length > 0) {
+            console.warn('Using static videos as fallback - no videos in API response')
+            setVideos(youtubeVideos)
+          }
+        }
+      } catch (error: any) {
+        console.error('Error fetching YouTube videos:', error)
+        setApiError(error?.message || 'Failed to fetch videos from YouTube')
+        // Fallback to static videos
+        if (youtubeVideos.length > 0) {
+          console.warn('Using static videos as fallback due to fetch error')
+          setVideos(youtubeVideos)
+        }
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchVideos()
+  }, [])
 
   return (
     <>
@@ -55,13 +118,30 @@ export default function YouTubeVideos() {
               Explore our collection of informative videos on mental health, wellness, and psychiatric care. 
               Learn from expert insights and evidence-based information.
             </p>
+            {apiError && (
+              <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg text-sm">
+                ⚠️ API Error: {apiError}. Showing fallback videos.
+              </div>
+            )}
+            {!isLoading && !apiError && videos.length > 0 && (
+              <div className="mt-4 p-3 bg-green-100 border border-green-400 text-green-800 rounded-lg text-sm">
+                ✅ Loaded {videos.length} videos from YouTube
+              </div>
+            )}
           </div>
 
           {/* Video Grid - Horizontal scroll on mobile, grid on larger screens */}
           <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8">
             {/* Mobile: Horizontal scrollable container */}
-            <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
-              {youtubeVideos.map((video) => {
+            {isLoading ? (
+              <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4">
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+                <div className="w-[85vw] flex-shrink-0 bg-gray-200 animate-pulse rounded-2xl h-64"></div>
+              </div>
+            ) : (
+              <div className="flex sm:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
+                {videos.map((video) => {
                 const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
                 const isHovered = hoveredVideo === video.id
                 
@@ -137,10 +217,18 @@ export default function YouTubeVideos() {
                   </div>
                 )
               })}
-            </div>
+              </div>
+            )}
 
             {/* Desktop: Grid layout */}
-            {youtubeVideos.map((video) => {
+            {isLoading ? (
+              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="bg-gray-200 animate-pulse rounded-2xl h-80"></div>
+                ))}
+              </div>
+            ) : (
+              videos.map((video) => {
               const thumbnailUrl = video.thumbnailUrl || getYouTubeThumbnailUrl(video.videoId)
               const isHovered = hoveredVideo === video.id
               
@@ -215,13 +303,14 @@ export default function YouTubeVideos() {
                   <div className="absolute inset-0 border-2 border-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               )
-            })}
+            })
+            )}
           </div>
 
           {/* View More Button */}
           <div className="mt-12 md:mt-16 text-center">
             <a
-              href="https://www.youtube.com/@yourchannel" // Replace with actual YouTube channel URL
+              href={channelUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

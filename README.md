@@ -43,6 +43,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 └── package.json           # Dependencies
 ```
 
+## YouTube Integration
+
+The website automatically fetches videos from the YouTube channel `@Daderwalmukesh`. To enable this feature:
+
+1. Get a YouTube Data API v3 key from [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable the YouTube Data API v3 for your project
+3. Add the API key to your `.env.local` file:
+
+```env
+YOUTUBE_API_KEY=your_youtube_api_key_here
+```
+
+**Note:** If the API key is not configured, the website will use static video data as a fallback. The component will still function normally.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

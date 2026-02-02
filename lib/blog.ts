@@ -4,6 +4,10 @@ import { BlogPost, BlogPostInput } from '@/types/blog'
 // Initialize database table (run this once)
 export async function initBlogTable() {
   try {
+    if (!sql) {
+      throw new Error('Database connection not available. DATABASE_URL is not set.')
+    }
+    
     await sql`
       CREATE TABLE IF NOT EXISTS blog_posts (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
