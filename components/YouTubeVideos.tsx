@@ -118,9 +118,14 @@ export default function YouTubeVideos() {
               Explore our collection of informative videos on mental health, wellness, and psychiatric care. 
               Learn from expert insights and evidence-based information.
             </p>
-            {apiError && (
+            {apiError && videos.length > 0 && (
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg text-sm">
+                ℹ️ Using curated videos. {apiError.includes('Channel not found') ? 'YouTube channel lookup unavailable.' : 'YouTube API temporarily unavailable.'}
+              </div>
+            )}
+            {apiError && videos.length === 0 && (
               <div className="mt-4 p-3 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg text-sm">
-                ⚠️ API Error: {apiError}. Showing fallback videos.
+                ⚠️ Unable to load videos. {apiError}
               </div>
             )}
             {!isLoading && !apiError && videos.length > 0 && (

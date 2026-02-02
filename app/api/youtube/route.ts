@@ -47,82 +47,156 @@ export async function GET() {
     // Try multiple methods to find the channel
     let channelId: string | null = null
     
-    // Method 1: Try searching for the channel handle
+    // Method 1: Use channels.list with forHandle parameter (most reliable, introduced in 2023)
     try {
-      const searchResponse = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent('@' + CHANNEL_HANDLE)}&type=channel&key=${apiKey}&maxResults=5`
+      const channelResponse = await fetch(
+        `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${CHANNEL_HANDLE}&key=${apiKey}`
       )
 
-      if (!searchResponse.ok) {
-        const errorData = await searchResponse.json().catch(() => ({}))
-        console.error('YouTube API search error:', errorData)
-        throw new Error(`YouTube API error: ${errorData.error?.message || 'Unknown error'}`)
-      }
-
-      const searchData = await searchResponse.json()
+      const channelData = await channelResponse.json()
       
-      if (searchData.error) {
-        console.error('YouTube API returned error:', searchData.error)
-        throw new Error(`YouTube API error: ${searchData.error.message}`)
-      }
-      
-      if (searchData.items && searchData.items.length > 0) {
-        // Find the exact match for the channel handle
-        const exactMatch = searchData.items.find((item: any) => 
-          item.snippet.customUrl?.toLowerCase().includes(CHANNEL_HANDLE.toLowerCase()) ||
-          item.snippet.title?.toLowerCase().includes(CHANNEL_HANDLE.toLowerCase())
-        )
-        
-        if (exactMatch) {
-          channelId = exactMatch.snippet.channelId
-          console.log('Found channel ID via Method 1:', channelId)
-        } else {
-          // Use the first result if no exact match
-          channelId = searchData.items[0].snippet.channelId
-          console.log('Found channel ID via Method 1 (first result):', channelId)
+      if (channelResponse.ok) {
+        if (!channelData.error && channelData.items && channelData.items.length > 0) {
+          channelId = channelData.items[0].id
+          console.log('Found channel ID via forHandle method:', channelId)
+        } else if (channelData.error) {
+          console.warn('forHandle method API error:', channelData.error)
         }
+      } else {
+        console.warn('forHandle method HTTP error:', channelResponse.status, channelData)
       }
     } catch (error) {
-      console.warn('Method 1 failed, trying alternative:', error)
+      console.warn('forHandle method failed, trying alternatives:', error)
     }
 
-    // Method 2: If Method 1 failed, try searching by channel name
+    // Method 2: Try searching for the channel handle with @ symbol
+    if (!channelId) {
+      try {
+        const searchResponse = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent('@' + CHANNEL_HANDLE)}&type=channel&key=${apiKey}&maxResults=10`
+        )
+
+        const searchData = await searchResponse.json()
+        
+        if (searchResponse.ok) {
+          if (!searchData.error && searchData.items && searchData.items.length > 0) {
+            console.log(`Method 2 found ${searchData.items.length} channels, searching for exact match...`)
+            // Find exact match by checking customUrl or channel title
+            const exactMatch = searchData.items.find((item: any) => {
+              const customUrl = item.snippet.customUrl?.toLowerCase().replace('@', '')
+              const title = item.snippet.title?.toLowerCase()
+              const handleLower = CHANNEL_HANDLE.toLowerCase()
+              const match = customUrl === handleLower || title.includes(handleLower)
+              if (match) {
+                console.log('Exact match found:', { customUrl, title, handleLower })
+              }
+              return match
+            })
+            
+            if (exactMatch) {
+              channelId = exactMatch.snippet.channelId
+              console.log('Found channel ID via search Method 2:', channelId)
+            } else if (searchData.items.length > 0) {
+              // Use the first result if no exact match
+              channelId = searchData.items[0].snippet.channelId
+              console.log('Found channel ID via search Method 2 (first result):', channelId, 'Title:', searchData.items[0].snippet.title)
+            }
+          } else if (searchData.error) {
+            console.warn('Search Method 2 API error:', searchData.error)
+          }
+        } else {
+          console.warn('Search Method 2 HTTP error:', searchResponse.status, searchData)
+        }
+      } catch (error) {
+        console.warn('Search Method 2 failed:', error)
+      }
+    }
+
+    // Method 3: Try searching without @ symbol
     if (!channelId) {
       try {
         const searchResponse2 = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(CHANNEL_HANDLE)}&type=channel&key=${apiKey}&maxResults=5`
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(CHANNEL_HANDLE)}&type=channel&key=${apiKey}&maxResults=10`
         )
-
-        if (!searchResponse2.ok) {
-          const errorData2 = await searchResponse2.json().catch(() => ({}))
-          console.error('YouTube API search error (Method 2):', errorData2)
-          throw new Error(`YouTube API error: ${errorData2.error?.message || 'Unknown error'}`)
-        }
 
         const searchData2 = await searchResponse2.json()
         
-        if (searchData2.error) {
-          console.error('YouTube API returned error (Method 2):', searchData2.error)
-          throw new Error(`YouTube API error: ${searchData2.error.message}`)
-        }
-        
-        if (searchData2.items && searchData2.items.length > 0) {
-          channelId = searchData2.items[0].snippet.channelId
-          console.log('Found channel ID via Method 2:', channelId)
+        if (searchResponse2.ok) {
+          if (!searchData2.error && searchData2.items && searchData2.items.length > 0) {
+            console.log(`Method 3 found ${searchData2.items.length} channels, searching for best match...`)
+            // Try to find best match
+            const bestMatch = searchData2.items.find((item: any) => {
+              const customUrl = item.snippet.customUrl?.toLowerCase().replace('@', '')
+              const title = item.snippet.title?.toLowerCase()
+              const handleLower = CHANNEL_HANDLE.toLowerCase()
+              const match = customUrl === handleLower || title.includes(handleLower) || title.includes('daderwal')
+              if (match) {
+                console.log('Best match found:', { customUrl, title, handleLower })
+              }
+              return match
+            })
+            
+            if (bestMatch) {
+              channelId = bestMatch.snippet.channelId
+              console.log('Found channel ID via search Method 3:', channelId)
+            } else {
+              channelId = searchData2.items[0].snippet.channelId
+              console.log('Found channel ID via search Method 3 (first result):', channelId, 'Title:', searchData2.items[0].snippet.title)
+            }
+          } else if (searchData2.error) {
+            console.warn('Search Method 3 API error:', searchData2.error)
+          }
+        } else {
+          console.warn('Search Method 3 HTTP error:', searchResponse2.status, searchData2)
         }
       } catch (error) {
-        console.warn('Method 2 failed:', error)
+        console.warn('Search Method 3 failed:', error)
+      }
+    }
+
+    // Method 4: Try searching by doctor's full name as last resort
+    if (!channelId) {
+      try {
+        const searchResponse3 = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent('Dr. Mukesh Chand Daderwal')}&type=channel&key=${apiKey}&maxResults=5`
+        )
+
+        const searchData3 = await searchResponse3.json()
+        
+        if (searchResponse3.ok) {
+          if (!searchData3.error && searchData3.items && searchData3.items.length > 0) {
+            console.log(`Method 4 found ${searchData3.items.length} channels by name...`)
+            // Look for channel with daderwal in title or customUrl
+            const nameMatch = searchData3.items.find((item: any) => {
+              const customUrl = item.snippet.customUrl?.toLowerCase()
+              const title = item.snippet.title?.toLowerCase()
+              return (customUrl && customUrl.includes('daderwal')) || title.includes('daderwal')
+            })
+            
+            if (nameMatch) {
+              channelId = nameMatch.snippet.channelId
+              console.log('Found channel ID via search Method 4 (name search):', channelId, 'Title:', nameMatch.snippet.title)
+            }
+          }
+        }
+      } catch (error) {
+        console.warn('Search Method 4 failed:', error)
       }
     }
 
     if (!channelId) {
       console.error('Channel not found for handle:', CHANNEL_HANDLE)
+      console.error('All lookup methods failed. Please verify:')
+      console.error('1. Channel handle is correct:', CHANNEL_HANDLE)
+      console.error('2. Channel URL is:', CHANNEL_URL)
+      console.error('3. YouTube API key is configured and has proper permissions')
       return NextResponse.json(
         { 
           videos: [],
           channelUrl: CHANNEL_URL,
           error: 'Channel not found. Please verify the channel handle.',
-          debug: 'Could not find channel with handle: ' + CHANNEL_HANDLE
+          errorMessage: 'Channel not found. Please verify the channel handle.',
+          debug: `Could not find channel with handle: ${CHANNEL_HANDLE}. Please check: 1) Channel handle is correct, 2) YouTube API key has proper permissions, 3) Channel exists and is public.`
         },
         { status: 200 }
       )
