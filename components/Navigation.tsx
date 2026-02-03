@@ -10,9 +10,11 @@ export default function Navigation() {
 
   const navItems = [
     { label: 'Home', href: '/' },
+    { label: 'Services', href: '/#specializations' },
+    { label: 'Gallery', href: '/#gallery' },
+    { label: 'Videos', href: '/#videos' },
     { label: 'Blog', href: '/blog' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'About', href: '#about' },
+    { label: 'FAQ', href: '/#faq' },
   ]
 
   return (
@@ -31,7 +33,7 @@ export default function Navigation() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-gray-900">Mano Unnati</span>
-                <span className="text-xs text-gray-600">Neuropsychiatry & De-addiction Care</span>
+                <span className="text-xs text-gray-600">Psychiatric Hospital & Psychotherapy Wing</span>
               </div>
             </a>
           </div>

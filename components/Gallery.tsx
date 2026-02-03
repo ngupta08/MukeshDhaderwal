@@ -8,7 +8,7 @@ export default function Gallery() {
   const { totalWorkshops, totalAttendance, avgAttendance } = getGalleryStatistics()
 
   return (
-    <section className="relative py-16 md:py-24 lg:py-32 bg-gray-50 overflow-hidden">
+    <section id="gallery" className="relative py-16 md:py-24 lg:py-32 bg-gray-50 overflow-hidden">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)',
