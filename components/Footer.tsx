@@ -20,19 +20,16 @@ export default function Footer() {
             <div className="mb-4">
               <Image
                 src="/logo.svg"
-                alt="Mano Unnati Neuropsychiatry and De-addiction Care"
+                alt="Mano Unnati Psychiatric Hospital"
                 width={60}
                 height={60}
                 className="object-contain mb-3"
               />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Dr. Mukesh Chand Daderwal is a psychiatrist whose passion is his occupation. 
-              MBBS, MD Psychiatrist, trained at National Institute of Mental Health and 
-              Neuroscience (NIMHANS), Bangalore. Currently working at SMS Medical College 
-              and Hospital, Jaipur, Rajasthan. Specialized in child psychiatry, geriatric 
-              psychiatry, de-addiction, clinical liaison psychiatry, neurology, sexual disorders, 
-              sleep disorders, and brain stimulation.
+              Mano Unnati is a psychiatric hospital led by Dr. Mukesh Chand Daderwal (MD Psychiatry, NIMHANS),
+              providing comprehensive diagnosis and medical treatment. We also have a dedicated Psychotherapy Wing
+              headed by Dr Priyanka Sheoran (PhD Psychology) for counselling and psychotherapy support.
             </p>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300 text-sm">
@@ -88,6 +85,10 @@ export default function Footer() {
                 <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
                 Child & Adolescence Psychiatric Disorder
               </li>
+              <li className="hover:text-teal-400 transition-colors cursor-pointer">
+                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
+                Counselling & Psychotherapy
+              </li>
             </ul>
           </div>
 
@@ -109,7 +110,7 @@ export default function Footer() {
               </li>
               <li className="hover:text-teal-400 transition-colors cursor-pointer">
                 <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Psychological Counsellor
+                Psychotherapy Wing
               </li>
               <li className="hover:text-teal-400 transition-colors cursor-pointer">
                 <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>

@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import axios, { AxiosResponse } from "axios";
 
 interface YouTubeVideoItem {
   videoId: string;
@@ -71,39 +70,61 @@ export async function GET() {
     }
 
     // 1️⃣ Get uploads playlist ID
-    const channelRes = await axios.get<ChannelResponse>(
-      "https://www.googleapis.com/youtube/v3/channels",
-      {
-        params: {
+    const channelRes = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?` +
+        new URLSearchParams({
           part: "contentDetails",
           id: channelId,
           key: apiKey,
-        },
-      },
+        }),
     );
 
+    if (!channelRes.ok) {
+      const errorData = await channelRes.json().catch(() => null);
+      return NextResponse.json(
+        {
+          error: "Failed to fetch YouTube channel details",
+          details: errorData ?? null,
+        },
+        { status: 500 },
+      );
+    }
+
+    const channelData = (await channelRes.json()) as ChannelResponse;
+
     const uploadsPlaylistId =
-      channelRes.data.items[0].contentDetails.relatedPlaylists.uploads;
+      channelData.items[0].contentDetails.relatedPlaylists.uploads;
 
     let videos: YouTubeVideoItem[] = [];
     let nextPageToken: string | undefined = undefined;
 
     // 2️⃣ Fetch playlist videos
     do {
-      const res: AxiosResponse<PlaylistItemsResponse> = await axios.get<PlaylistItemsResponse>(
-        "https://www.googleapis.com/youtube/v3/playlistItems",
-        {
-          params: {
+      const playlistRes = await fetch(
+        `https://www.googleapis.com/youtube/v3/playlistItems?` +
+          new URLSearchParams({
             part: "snippet",
             playlistId: uploadsPlaylistId,
-            maxResults: 50,
-            pageToken: nextPageToken,
+            maxResults: "50",
+            ...(nextPageToken ? { pageToken: nextPageToken } : {}),
             key: apiKey,
-          },
-        },
+          }),
       );
 
-      res.data.items.forEach(({ snippet }) => {
+      if (!playlistRes.ok) {
+        const errorData = await playlistRes.json().catch(() => null);
+        return NextResponse.json(
+          {
+            error: "Failed to fetch YouTube playlist items",
+            details: errorData ?? null,
+          },
+          { status: 500 },
+        );
+      }
+
+      const data = (await playlistRes.json()) as PlaylistItemsResponse;
+
+      data.items.forEach(({ snippet }) => {
         const videoId = snippet.resourceId.videoId;
 
         videos.push({
@@ -117,7 +138,7 @@ export async function GET() {
         });
       });
 
-      nextPageToken = res.data.nextPageToken;
+      nextPageToken = data.nextPageToken;
     } while (nextPageToken);
 
     return NextResponse.json({

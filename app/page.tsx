@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
+import Psychotherapy from '@/components/Psychotherapy'
 import Specializations from '@/components/Specializations'
 import ClinicPhotos from '@/components/ClinicPhotos'
 import Gallery from '@/components/Gallery'
@@ -26,6 +27,7 @@ export default async function Home() {
     <main className="min-h-screen">
       <Navigation />
       <Hero />
+      <Psychotherapy />
       <Specializations />
       <ClinicPhotos />
       <Gallery />

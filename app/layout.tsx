@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'MindCare - Professional Psychiatric Care',
-  description: 'Professional psychiatric care in a safe, compassionate environment. Licensed and certified mental health services.',
+  title: 'Mano Unnati Psychiatric Hospital | Psychiatry & Psychotherapy in Jaipur',
+  description:
+    'Mano Unnati Psychiatric Hospital in Jaipur offers Psychiatry (Dr. Mukesh Chand Daderwal) and a dedicated Psychotherapy Wing (Dr Priyanka Sheoran, PhD Psychology). Book appointments via WhatsApp.',
 }
 
 export default function RootLayout({

@@ -13,7 +13,7 @@ const faqData: FAQItem[] = [
   {
     id: '1',
     question: 'What conditions do you treat?',
-    answer: 'We provide comprehensive psychiatric care for a wide range of mental health conditions including anxiety disorders, depression, bipolar disorder, schizophrenia, OCD, PTSD, ADHD, substance use disorders, and other mood and personality disorders. We also offer counseling and therapy services.'
+    answer: 'We provide comprehensive psychiatric care for a wide range of mental health conditions including anxiety disorders, depression, bipolar disorder, schizophrenia, OCD, PTSD, ADHD, substance use disorders, and other mood and personality disorders. We also have a dedicated psychotherapy wing for counselling and psychotherapy support.'
   },
   {
     id: '2',
@@ -53,7 +53,7 @@ const faqData: FAQItem[] = [
   {
     id: '9',
     question: 'What is the difference between a psychiatrist and a psychologist?',
-    answer: 'A psychiatrist is a medical doctor (MD) who can diagnose mental health conditions, prescribe medications, and provide both medication management and therapy. A psychologist typically provides therapy and psychological testing but cannot prescribe medications. Dr. Mukesh Chand Daderwal is a psychiatrist with MD in Psychiatry from NIMHANS, providing comprehensive psychiatric care including medication management and therapy.'
+    answer: 'A psychiatrist is a medical doctor (MD) who can diagnose mental health conditions, prescribe medications, and provide medical treatment plans. A psychologist/psychotherapist typically provides counselling and psychotherapy (talk therapy) and psychological support, but cannot prescribe medications. At Mano Unnati, Dr. Mukesh Chand Daderwal leads psychiatric care, and Dr Priyanka Sheoran (PhD Psychology) heads the psychotherapy wing.'
   },
   {
     id: '10',

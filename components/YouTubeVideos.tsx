@@ -49,7 +49,6 @@ export default function YouTubeVideos() {
         }
         
         if (data.videos && Array.isArray(data.videos) && data.videos.length > 0) {
-          console.log(`✅ Successfully loaded ${data.videos.length} videos from YouTube`)
           setVideos(data.videos)
           setApiError(null)
           if (data.channelUrl) {
@@ -82,7 +81,7 @@ export default function YouTubeVideos() {
 
   return (
     <>
-      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-white via-teal-50/30 to-cyan-50/20 overflow-hidden">
+      <section id="videos" className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-white via-teal-50/30 to-cyan-50/20 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Animated gradient orbs */}
@@ -128,11 +127,7 @@ export default function YouTubeVideos() {
                 ⚠️ Unable to load videos. {apiError}
               </div>
             )}
-            {!isLoading && !apiError && videos.length > 0 && (
-              <div className="mt-4 p-3 bg-green-100 border border-green-400 text-green-800 rounded-lg text-sm">
-                ✅ Loaded {videos.length} videos from YouTube
-              </div>
-            )}
+            {/* Intentionally no success banner here (keep UI clean). */}
           </div>
 
           {/* Video Grid - Horizontal scroll on mobile, grid on larger screens */}
