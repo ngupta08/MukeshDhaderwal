@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import Psychotherapy from '@/components/Psychotherapy'
 import Specializations from '@/components/Specializations'
+import ChildDevelopmentCentre from '@/components/ChildDevelopmentCentre'
 import ClinicPhotos from '@/components/ClinicPhotos'
 import Gallery from '@/components/Gallery'
 import YouTubeVideos from '@/components/YouTubeVideos'
@@ -29,6 +30,7 @@ export default async function Home() {
       <Hero />
       <Psychotherapy />
       <Specializations />
+      <ChildDevelopmentCentre />
       <ClinicPhotos />
       <Gallery />
       <YouTubeVideos />
