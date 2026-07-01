@@ -85,8 +85,8 @@ export default function YouTubeVideos() {
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Animated gradient orbs */}
-          <div className="absolute top-20 right-20 w-96 h-96 bg-red-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute top-20 right-20 w-96 h-96 bg-teal-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
           
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -99,16 +99,16 @@ export default function YouTubeVideos() {
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-red-500"></div>
-              <span className="px-4 py-2 bg-gradient-to-r from-red-100 via-orange-100 to-red-100 text-red-700 rounded-full text-sm font-bold shadow-sm">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-teal-500"></div>
+              <span className="px-4 py-2 bg-gradient-to-r from-teal-100 via-cyan-100 to-teal-100 text-teal-700 rounded-full text-sm font-bold shadow-sm">
                 Video Library
               </span>
-              <div className="h-px w-12 bg-gradient-to-l from-transparent to-orange-500"></div>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500"></div>
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
               <span className="block">Educational</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-red-600 mt-2">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-600 mt-2">
                 Video Content
               </span>
             </h2>
@@ -172,7 +172,7 @@ export default function YouTubeVideos() {
                       <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
                         isHovered ? 'scale-110 opacity-100' : 'scale-100 opacity-90'
                       }`}>
-                        <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-red-700 transition-colors">
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-teal-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-teal-700 transition-colors">
                           <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="white" />
                         </div>
                       </div>
@@ -187,7 +187,7 @@ export default function YouTubeVideos() {
 
                       {/* Category Badge */}
                       {video.category && (
-                        <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        <div className="absolute top-3 left-3 bg-teal-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
                           {video.category}
                         </div>
                       )}
@@ -195,7 +195,7 @@ export default function YouTubeVideos() {
 
                     {/* Video Info */}
                     <div className="p-5">
-                      <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
                         {video.title}
                       </h3>
                       
@@ -213,7 +213,7 @@ export default function YouTubeVideos() {
                     </div>
 
                     {/* Hover Effect Border */}
-                    <div className="absolute inset-0 border-2 border-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div className="absolute inset-0 border-2 border-teal-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                 )
               })}
@@ -259,7 +259,7 @@ export default function YouTubeVideos() {
                     <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
                       isHovered ? 'scale-110 opacity-100' : 'scale-100 opacity-90'
                     }`}>
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-red-700 transition-colors">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-teal-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-teal-700 transition-colors">
                         <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="white" />
                       </div>
                     </div>
@@ -274,7 +274,7 @@ export default function YouTubeVideos() {
 
                     {/* Category Badge */}
                     {video.category && (
-                      <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      <div className="absolute top-3 left-3 bg-teal-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
                         {video.category}
                       </div>
                     )}
@@ -282,7 +282,7 @@ export default function YouTubeVideos() {
 
                   {/* Video Info */}
                   <div className="p-5">
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
                       {video.title}
                     </h3>
                     
@@ -300,7 +300,7 @@ export default function YouTubeVideos() {
                   </div>
 
                   {/* Hover Effect Border */}
-                  <div className="absolute inset-0 border-2 border-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 border-2 border-teal-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               )
             })
@@ -313,7 +313,7 @@ export default function YouTubeVideos() {
               href={channelUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <span>View All Videos</span>
               <ExternalLink className="w-5 h-5" />

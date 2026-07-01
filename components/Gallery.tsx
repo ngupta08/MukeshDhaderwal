@@ -18,8 +18,15 @@ export default function Gallery() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-orange-600 mb-4">
-            Outreach
+          <div className="inline-block mb-4">
+            <span className="px-4 py-2 bg-gradient-to-r from-teal-100 to-cyan-100 text-teal-700 rounded-full text-sm font-semibold">
+              Community Outreach
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600">
+              Outreach
+            </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
             Hands-on workshops and awareness programs at top colleges and institutions across India
@@ -175,7 +182,7 @@ export default function Gallery() {
 
         {/* View All Button */}
         <div className="text-center">
-          <button className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-orange-500 text-gray-900 font-semibold rounded-xl hover:bg-orange-50 transition-all duration-300 shadow-md hover:shadow-lg">
+          <button className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-teal-500 text-gray-900 font-semibold rounded-xl hover:bg-teal-50 transition-all duration-300 shadow-md hover:shadow-lg">
             <span>View All 6 Workshops</span>
             <ExternalLink className="w-4 h-4" />
           </button>

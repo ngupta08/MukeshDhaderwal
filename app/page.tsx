@@ -1,7 +1,8 @@
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
-import Psychotherapy from '@/components/Psychotherapy'
+import ChooseYourCare from '@/components/ChooseYourCare'
 import Specializations from '@/components/Specializations'
+import Psychotherapy from '@/components/Psychotherapy'
 import ChildDevelopmentCentre from '@/components/ChildDevelopmentCentre'
 import ClinicPhotos from '@/components/ClinicPhotos'
 import Gallery from '@/components/Gallery'
@@ -28,8 +29,9 @@ export default async function Home() {
     <main className="min-h-screen">
       <Navigation />
       <Hero />
-      <Psychotherapy />
+      <ChooseYourCare />
       <Specializations />
+      <Psychotherapy />
       <ChildDevelopmentCentre />
       <ClinicPhotos />
       <Gallery />

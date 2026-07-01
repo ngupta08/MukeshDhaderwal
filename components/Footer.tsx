@@ -28,8 +28,9 @@ export default function Footer() {
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
               Mano Unnati is a psychiatric hospital led by Dr. Mukesh Chand Daderwal (MD Psychiatry, NIMHANS),
-              providing comprehensive diagnosis and medical treatment. We also have a dedicated Psychotherapy Wing
-              headed by Dr Priyanka Sheoran (PhD Psychology) for counselling and psychotherapy support.
+              providing comprehensive diagnosis and medical treatment. We have three dedicated wings — Psychiatry,
+              Psychotherapy (led by Dr Priyanka Sheoran, PhD Psychology), and the ManoUnnati Child Development
+              Centre for developmental, speech, and behavioural therapy support.
             </p>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300 text-sm">
@@ -57,69 +58,49 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Our Services Section */}
+          {/* Psychiatry & Psychotherapy Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4 text-teal-400">Our Services</h3>
+            <h3 className="text-xl font-bold mb-4 text-teal-400">Psychiatry &amp; Psychotherapy</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Anxiety Treatments
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Depression
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Schizophrenia
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                De Addiction
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Obsessive Compulsive Disorder (OCD)
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Child & Adolescence Psychiatric Disorder
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2"></span>
-                Counselling & Psychotherapy
-              </li>
+              {[
+                'Anxiety Treatments',
+                'Depression & Mood Disorders',
+                'Schizophrenia',
+                'De Addiction',
+                'Obsessive Compulsive Disorder (OCD)',
+                'Sleep & Psychosexual Disorders',
+                'Counselling & Psychotherapy',
+              ].map((service) => (
+                <li key={service}>
+                  <a href="/#specializations" className="hover:text-teal-400 transition-colors flex items-center">
+                    <span className="inline-block w-2 h-2 bg-teal-400 rounded-full mr-2 flex-shrink-0"></span>
+                    {service}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Other Services Section */}
+          {/* Child Development Centre Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4 text-teal-400">Other Services</h3>
+            <h3 className="text-xl font-bold mb-4 text-teal-400">Child Development Centre</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Mood Disorder
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Old Age Psychiatric Disorder
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Other Treatments
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Psychotherapy Wing
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Psychosexual Disorder
-              </li>
-              <li className="hover:text-teal-400 transition-colors cursor-pointer">
-                <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                Sleep Disorder
-              </li>
+              {[
+                'Psychological Evaluation',
+                'Speech Therapy',
+                'Occupational Therapy',
+                'Physiotherapy',
+                'Special Education',
+                'Behaviour Therapy',
+                'Autism, ADHD & Learning Disorders',
+              ].map((service) => (
+                <li key={service}>
+                  <a href="/#child-development-centre" className="hover:text-teal-400 transition-colors flex items-center">
+                    <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2 flex-shrink-0"></span>
+                    {service}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
