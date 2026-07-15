@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Calendar, Stethoscope, Award, Clock, ArrowRight, Star, Phone } from 'lucide-react'
 
 export default function Hero() {
@@ -17,17 +18,17 @@ export default function Hero() {
   return (
     <section className="relative min-h-[88vh] md:min-h-[85vh] flex items-center pt-24 pb-16 md:pb-24 overflow-hidden">
       {/* Full Background Image */}
-      <div
-        className="absolute inset-0 z-0 w-full h-full"
-        style={{
-          backgroundImage: 'url(/sadness_mukesh_happy.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-teal-900/45 to-cyan-900/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Image
+          src="/sadness_mukesh_happy.png"
+          alt="Dr. Mukesh Chand Daderwal"
+          fill
+          priority
+          className="object-cover object-[center_15%]"
+        />
+        {/* Lighter overlay on mobile (text card provides readability), darker on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-teal-900/15 to-cyan-900/20 md:from-slate-900/60 md:via-teal-900/45 md:to-cyan-900/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10 md:from-black/40 md:to-black/20" />
       </div>
 
       {/* Soft, calming background effects */}
@@ -40,7 +41,8 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Text content */}
           <div className="lg:col-span-7">
-            <div className="bg-white/10 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none rounded-3xl border border-white/15 lg:border-none p-6 sm:p-8 lg:p-0 shadow-2xl lg:shadow-none">
+            {/* On mobile, card is darker so it's readable without heavy background overlay */}
+            <div className="bg-slate-900/55 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none rounded-3xl border border-white/15 lg:border-none p-6 sm:p-8 lg:p-0 shadow-2xl lg:shadow-none">
               {/* Trust Badge */}
               <div className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-teal-600/95 to-cyan-600/95 backdrop-blur-sm rounded-xl shadow-xl border border-white/20 mb-6">
                 <div>
